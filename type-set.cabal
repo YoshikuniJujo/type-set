@@ -6,7 +6,9 @@ cabal-version: 2.2
 
 name:           type-set
 version:        0.1.0.0
+synopsis:       Type set
 description:    Please see the README on GitHub at <https://github.com/YoshikuniJujo/type-set#readme>
+category:       Data
 homepage:       https://github.com/YoshikuniJujo/type-set#readme
 bug-reports:    https://github.com/YoshikuniJujo/type-set/issues
 author:         Yoshikuni Jujo
@@ -25,8 +27,15 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Data.Type.Set
+      Data.Type.SetApp
+      Data.OneOfThem
+      Data.OneOrMore
+      Data.OneOrMoreApp
   other-modules:
+      Data.OneOrMore.Internal
+      Data.Type.Set.Internal
+      Data.Type.SetApp.Internal
       Paths_type_set
   autogen-modules:
       Paths_type_set
@@ -35,20 +44,8 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
-  default-language: Haskell2010
-
-executable type-set-exe
-  main-is: Main.hs
-  other-modules:
-      Paths_type_set
-  autogen-modules:
-      Paths_type_set
-  hs-source-dirs:
-      app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      base >=4.7 && <5
-    , type-set
+    , random
+    , template-haskell
   default-language: Haskell2010
 
 test-suite type-set-test
@@ -63,5 +60,7 @@ test-suite type-set-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , random
+    , template-haskell
     , type-set
   default-language: Haskell2010
